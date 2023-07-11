@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+ <style>
+    .calculator {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        border:solid;
+        border-radius: 5px 5px 4px ;
+      }
+      
+      input[type="text"] {
+        width: 180px;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 18px;
+      }
+      
+      button {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+        font-size: 15px;
+      }
+      h1{
+        padding: 10px;
+        text-align: center;
+        justify-content: center;
+
+      }
+ </style>
+</head>
+<h1>calculator</h1>
+<body bgcolor="skblue">
+  <div class="calculator">
+    <input type="text" id="result" readonly>
+    <table>
+      <tr>
+        <td><button onclick="appendNumber(7)">7</button></td>
+        <td><button onclick="appendNumber(8)">8</button></td>
+        <td><button onclick="appendNumber(9)">9</button></td>
+        <td><button onclick="appendOperator('+')">+</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="appendNumber(4)">4</button></td>
+        <td><button onclick="appendNumber(5)">5</button></td>
+        <td><button onclick="appendNumber(6)">6</button></td>
+        <td><button onclick="appendOperator('-')">-</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="appendNumber(1)">1</button></td>
+        <td><button onclick="appendNumber(2)">2</button></td>
+        <td><button onclick="appendNumber(3)">3</button></td>
+        <td><button onclick="appendOperator('*')">*</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="appendNumber(0)">0</button></td>
+        <td><button onclick="appendNumber('00')">00</button></td>
+        <td><button onclick="calculate()">=</button></td>
+        <td><button onclick="appendOperator('/')">/</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="appendOperator('.')">.</button></td>
+        <td><button onclick="back('<-')"><-</button></td>
+        <td><button onclick="appendOperator('%')">%</button></td>
+        <td colspan="4"><button onclick="clearResult()">Cls</button></td>
+        
+      </tr>
+    </table>
+  </div>
+
+ <script>
+    let result = document.getElementById("result");
+
+function appendNumber(num) {
+  result.value += num;
+}
+
+function appendOperator(op) {
+  result.value += op;
+}
+function back(){
+  let ev=document.getElementById("result").value
+  ev1=ev.slice(0,-1)
+  document.getElementById("result").value=ev1
+}
+function calculate() {
+  try {
+    result.value = eval(result.value);
+  } catch (error) {
+    result.value = "Error";
+  }
+}
+
+function clearResult() {
+  result.value = "";
+}
+ </script>
+</body>
+</html>
